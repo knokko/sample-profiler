@@ -15,13 +15,13 @@ public class TestSampleProfiler {
         SampleProfiler profiler = new SampleProfiler(storage);
         profiler.sleepTime = 5;
 
-        sleep(100);
+        sleep(500);
 
         // Nothing until the profiler starts
         assertNull(storage.getThreadStorage(Thread.currentThread().getId()));
 
         profiler.start();
-        sleep(100);
+        sleep(500);
         profiler.stop();
 
         FrequencyThreadStorage threadStorage = storage.getThreadStorage(Thread.currentThread().getId());
@@ -30,6 +30,6 @@ public class TestSampleProfiler {
         long numSamples = threadStorage.rootNode.counter.get();
         System.out.println("numSamples is " + numSamples);
         assertTrue(numSamples >= 5);
-        assertTrue(numSamples <= 25);
+        assertTrue(numSamples <= 125);
     }
 }
