@@ -19,7 +19,7 @@ double thresholdPercentage = 1.0; // Only show entries with frequency >= 1%
 
 profiler.stop(); // Stop the profiler (optional)
 var currentThreadResults = storage.getThreadStorage(Thread.currentThread.id());
-currentThreadStorage.print(System.out, maxDepth, thresholdPercentage);
+currentThreadResults.print(System.out, maxDepth, thresholdPercentage);
 ```
 
 ### Storage
