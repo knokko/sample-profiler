@@ -1,10 +1,34 @@
 plugins {
-	id 'java'
+	id "java"
+	id "maven-publish"
 }
 
+apply plugin: "maven-publish"
+
 java {
+	withSourcesJar()
 	sourceCompatibility = "8"
 	targetCompatibility = "8"
+}
+
+publishing {
+	repositories {
+		maven {
+			name = "knokkoReposiliteSampleProfiler"
+			url = "https://49.12.188.159:8080/releases/"
+			credentials(PasswordCredentials)
+			authentication {
+				basic(BasicAuthentication)
+			}
+		}
+	}
+	publications {
+		mavenJava(MavenPublication) {
+			groupId = "com.github.knokko"
+			version = "1.0.0"
+			from components.java
+		}
+	}
 }
 
 repositories {
@@ -12,8 +36,8 @@ repositories {
 }
 
 dependencies {
-	testImplementation platform('org.junit:junit-bom:5.10.0')
-	testImplementation 'org.junit.jupiter:junit-jupiter:5.10.0'
+	testImplementation platform("org.junit:junit-bom:5.10.0")
+	testImplementation "org.junit.jupiter:junit-jupiter:5.10.0"
 	testRuntimeOnly("org.junit.platform:junit-platform-launcher")
 
 	test {

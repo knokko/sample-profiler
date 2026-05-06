@@ -77,18 +77,21 @@ since this class doesn't expose a tree structure).
 
 ### Add to your build
 This library requires Java 8 or later (and it's tested against
-Java 8, 11, 17, and 20).
+Java 17 and 25).
 #### Gradle
 ```
 ...
 repositories {
   ...
-  maven { url 'https://jitpack.io' }
+  maven {
+	name = "knokko-reposilite"
+	url = "https://49.12.188.159:8080/releases/"
+  }
 }
 ...
 dependencies {
   ...
-  implementation 'com.github.knokko:sample-profiler:v1.0.0'
+  implementation "com.github.knokko:sample-profiler:1.0.0"
 }
 ```
 
@@ -98,14 +101,15 @@ dependencies {
 <repositories>
   ...
   <repository>
-    <id>jitpack.io</id>
-    <url>https://jitpack.io</url>
+    <id>knokko-reposilite</id>
+    <name>Knokko Reposilite</name>
+    <url>https://49.12.188.159:8080/releases/</url>
   </repository>
 </repositories>
 ...
 <dependency>
   <groupId>com.github.knokko</groupId>
   <artifactId>sample-profiler</artifactId>
-  <version>v1.0.0</version>
+  <version>1.0.0</version>
 </dependency>
 ```
